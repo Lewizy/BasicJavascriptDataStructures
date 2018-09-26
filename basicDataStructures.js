@@ -47,6 +47,14 @@ log(popShift2)//middle
 
 //SPLICE MEHOD////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+var array = [1,2,3,4]
+var item = 3
+
+var index = array.indexOf(item);
+if (index !== -1) array.splice(index, 1);
+
+console.log(array)
+
 let arraySplice = ['today', 'was', 'not', 'so', 'great'];
 arraySplice.splice(2, 2);
 // remove 2 elements beginning with the 3rd element
@@ -66,11 +74,16 @@ console.log(sumOfTen([2, 5, 1, 5, 2, 1]));//10
 
 //Replacing values with splice
 
+var months = ['Jan', 'March', 'April', 'June'];
+months.splice(1, 0, 'Feb');
+// inserts at 1st index position
+console.log(months);
+// expected output: Array ['Jan', 'Feb', 'March', 'April', 'June']
+
 function replaceCartoons (arr){
   arr.splice(1,1,"Jerry");
   return arr;
 }
-
 log(replaceCartoons(["Morty","Rick","Mr. Noob Noob","Mr. Poopy B-Hole"]));
 //[ 'Morty', 'Jerry', 'Mr. Noob Noob', 'Mr. Poopy B-Hole' ]
 
@@ -128,6 +141,8 @@ function spreadOut() {
 }
 console.log(spreadOut());
 
+
+
 //Check For The Presence of an Element With indexOf()///////////////////////////////////////////////////////////////////////////////////function 
 
 function quickCheck(arr, elem) {
@@ -138,4 +153,127 @@ function quickCheck(arr, elem) {
 // change code here to test different cases:
 console.log(quickCheck(['squash', 'onions', 'shallots'], 'mushrooms'));
 
+//
 
+function filteredArray(arr, elem) {
+  let newArr = [];
+  // change code below this line
+ for(let i = 0; i < arr.length; i++) {
+   if(arr[i].indexOf(elem) < 0 ){
+     newArr.push(arr[i]);
+    } 
+  }
+  // change code above this line
+  return newArr;
+}
+// change code here to test different cases:
+console.log(filteredArray([[3, 2, 3], [1, 6, 3], [3, 13, 26], [19, 3, 9]], 3));
+
+//
+
+let users = {
+  Alan: {
+    age: 27,
+    online: true
+  },
+  Jeff: {
+    age: 32,
+    online: true
+  },
+  Sarah: {
+    age: 48,
+    online: true
+  },
+  Ryan: {
+    age: 19,
+    online: true
+  }
+};
+
+function isEveryoneHere(obj) {
+  // change code below this line
+  // if(users.hasOwnProperty("Alan","Jeff","Sarah","Ryan")){
+  //   return true;
+  // }else{return false};
+  
+  if("Alan","Jeff","Sarah","Ryan" in users){
+    return true;
+  }else{return false;}
+}
+console.log(isEveryoneHere(users));
+
+//
+
+let users = {
+  Alan: {
+    age: 27,
+    online: false
+  },
+  Jeff: {
+    age: 32,
+    online: true
+  },
+  Sarah: {
+    age: 48,
+    online: false
+  },
+  Ryan: {
+    age: 19,
+    online: true
+  }
+};
+
+function countOnline(obj) {
+  let count = [];
+
+  for (let i in obj){
+    if(obj[i].online == true){
+      count ++;
+    } }
+return count;
+}
+console.log(countOnline(users));
+
+//Access Property Names with Bracket Notation
+
+let foods = {
+  apples: 25,
+  oranges: 32,
+  plums: 28,
+  bananas: 13,
+  grapes: 35,
+  strawberries: 27
+};
+console.log(Object.keys(foods));
+function checkInventory(scannedItem) {
+  return foods[scannedItem];
+}
+console.log(checkInventory("bananas"));
+
+//Modify an Array Stored in an Object
+
+let user = {
+  name: 'Kenneth',
+  age: 28,
+  data: {
+    username: 'kennethCodesAllDay',
+    joinDate: 'March 26, 2016',
+    organization: 'freeCodeCamp',
+    friends: [
+      'Sam',
+      'Kira',
+      'Tomo'],
+    location: {
+      city: 'San Francisco',
+      state: 'CA',
+      country: 'USA'
+}}};
+function addFriend(userObj, friend) {
+  for (let i in userObj){
+    if(userObj[i].hasOwnProperty("friends")){
+       userObj[i].friends.push(friend);
+     }
+  }
+     return userObj.data.friends;   
+}
+console.log(addFriend(user, 'Pete'));
